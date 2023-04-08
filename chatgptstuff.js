@@ -12,7 +12,7 @@ async function processMessage(text) {
   // Send the text to the GPT-3 API and receive a response
   const prompt = `You received a message: "${text}". Please generate a response:`;
   const gptResponse = await openai.createCompletion({
-    engine: "davinci-codex",
+    model: "text-davinci-003",
     prompt: prompt,
     max_tokens: 150,
     n: 1,
