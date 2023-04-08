@@ -24,7 +24,7 @@ app.post("/webhook", async (req, res) => {
     await client.messages.create({
       body: responseText,
       from: "whatsapp:+14155238886", // Replace with your Twilio WhatsApp sandbox number
-      to: `whatsapp:${senderPhoneNumber}`,
+      to: senderPhoneNumber,
     });
 
     res.sendStatus(200);
