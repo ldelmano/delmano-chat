@@ -18,7 +18,7 @@ app.post("/webhook", async (req, res) => {
     const messageText = req.body.body;
     const senderPhoneNumber = req.body.from;
 
-    console.log(messageText, senderPhoneNumber);
+    console.log(req.body);
 
     const responseText = await processMessage(messageText);
 
