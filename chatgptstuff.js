@@ -1,14 +1,17 @@
-const openai = require("openai");
+const openaipkg = require("openai");
 
 require("dotenv").config();
 
-const openaiApiKey = process.env.OPENAI_API_KEY;
-openai.apiKey = openaiApiKey;
+const configuration = new openaipkg.Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const openai = new openaipkg.OpenAIApi(configuration);
 
 async function processMessage(text) {
   // Send the text to the GPT-3 API and receive a response
   const prompt = `You received a message: "${text}". Please generate a response:`;
-  const gptResponse = await openai.Completion.create({
+  const gptResponse = await openai.createCompletion({
     engine: "davinci-codex",
     prompt: prompt,
     max_tokens: 150,
