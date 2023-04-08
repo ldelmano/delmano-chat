@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/webhook", async (req, res) => {
   try {
-    const messageText = req.body.message.text;
-    const senderPhoneNumber = req.body.sender.phone_number;
+    const messageText = req.body.Body;
+    const senderPhoneNumber = req.body.From;
 
     const responseText = await processMessage(messageText);
 
