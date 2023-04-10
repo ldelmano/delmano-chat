@@ -45,12 +45,12 @@ app.post("/webhook", async (req, res) => {
       }
     }
 
-    await ZapfySdk.Message.sendTextMessage({
-      instanceKey: process.env.ZAPFY_INSTANCE_KEY,
-      instanceToken: process.env.ZAPFY_INSTANCE_TOKEN,
-      text: responseText,
-      destination: data.key.remoteJid,
-    });
+    // await ZapfySdk.Message.sendTextMessage({
+    //   instanceKey: process.env.ZAPFY_INSTANCE_KEY,
+    //   instanceToken: process.env.ZAPFY_INSTANCE_TOKEN,
+    //   text: responseText,
+    //   destination: data.key.remoteJid,
+    // });
 
     res.sendStatus(200);
   } catch (error) {
