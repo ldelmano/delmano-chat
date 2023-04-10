@@ -8,9 +8,11 @@ const configuration = new openaipkg.Configuration({
 
 const openai = new openaipkg.OpenAIApi(configuration);
 
-async function processMessage(text) {
+async function processMessage(text, context) {
+  const inputText = context ? `${context}\n${text}` : text;
+
   // Send the text to the GPT-3 API and receive a response
-  const prompt = `You received a message: "${text}". Please generate a response:`;
+  const prompt = `You received a message: "${inputText}". Please generate a response:`;
   const gptResponse = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: prompt,
