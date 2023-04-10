@@ -1,31 +1,23 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const twilio = require("twilio");
-const processMessage = require("./chatgptstuff").processMessage;
+const zapfy = require("zapfy-sdk");
+
+const { ZapfySdk } = zapfy;
 
 require("dotenv").config();
-
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = new twilio(accountSid, authToken);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/webhook", async (req, res) => {
   try {
-    const messageText = req.body.Body;
-    const senderPhoneNumber = req.body.From;
+    // const messageText = req.body.Body;
+    // const senderPhoneNumber = req.body.From;
 
-    const responseText = await processMessage(messageText);
+    // const responseText = await processMessage(messageText);
 
-    // Send the response using the Twilio client
-    await client.messages.create({
-      body: responseText,
-      from: "whatsapp:+14155238886", // Replace with your Twilio WhatsApp sandbox number
-      to: senderPhoneNumber,
-    });
+    console.log(req.body);
 
     res.sendStatus(200);
   } catch (error) {
