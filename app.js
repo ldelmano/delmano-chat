@@ -46,7 +46,7 @@ app.post("/webhook", async (req, res) => {
       }
     }
 
-    if (data?.key?.remoteJid) {
+    if (data?.key?.remoteJid && responseText) {
       await ZapfySdk.Message.sendTextMessage({
         instanceKey: process.env.ZAPFY_INSTANCE_KEY,
         instanceToken: process.env.ZAPFY_INSTANCE_TOKEN,
