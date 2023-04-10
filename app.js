@@ -40,10 +40,11 @@ app.post("/webhook", async (req, res) => {
               commands[command].context
             );
           }
-        } else {
-          // If the message is not a command, process it using the GPT-3 API
-          responseText = await processMessage(messageText);
         }
+        // else {
+        //   // If the message is not a command, process it using the GPT-3 API
+        //   responseText = await processMessage(messageText);
+        // }
       } else if (messageText === "/help") {
         responseText = commands["/help"].response;
       }
