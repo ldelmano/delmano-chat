@@ -22,7 +22,7 @@ const commands = {
   "/delmano-chat": {
     description:
       'Get a response from Chat GPT. Write /delmano-chat "your question"',
-    context: "",
+    context: "Use the same language for response",
   },
 };
 

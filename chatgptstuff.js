@@ -23,7 +23,7 @@ async function processMessage(text, context) {
   });
 
   // Extract the response text from the GPT-3 API response
-  const responseText = gptResponse.data.choices[0].text;
+  const responseText = gptResponse.data.choices[0].text.trim();
 
   return responseText;
 }
