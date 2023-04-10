@@ -33,7 +33,7 @@ app.post("/webhook", async (req, res) => {
               typeof commands[command].response === "function"
                 ? commands[command].response()
                 : commands[command].response;
-          } else {
+          } else if (!process.env.DISABLE_GPT) {
             // Otherwise, process the command using the GPT-3 API with context
             responseText = await processMessage(
               content,
